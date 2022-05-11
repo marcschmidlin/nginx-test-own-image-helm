@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: example
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: httpd
+  template:
+    metadata:
+      labels:
+        app: httpd
+    spec:
+      containers:
+        - name: httpd
+          image: 'marcschmidlin/dockerhub:mythirdimagepush'
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+              name: http
